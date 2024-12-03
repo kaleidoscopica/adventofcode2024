@@ -37,10 +37,11 @@ def main():
       safe_count += 1
     
     if not safe:
-      # What if it can be made safe by removing a bad level? Check what happens when we pop out levels
+      # What if it can be made safe by removing a bad level? Check what happens when we remove levels
       for x in range(report_length):
-        # Copy the report to a new list, removing the level at index 'x' each iteration
+        # Copy the report to a new list, removing one level at index 'x' each iteration
         tmp_report = report[:x] + report[x+1:]
+
         safe = True
         increasing_or_decreasing = []
 
@@ -61,9 +62,13 @@ def main():
         if 0 in increasing_or_decreasing and 1 in increasing_or_decreasing:
           safe = False
 
-        # If it's still safe, add it to the safe count
+        # If it's still safe, add it to the safe count.
         if safe:
           safe_count += 1
+          # Break the loop so we don't keep checking the same report
+          break
+        else:
+          continue
     
   print("The number of safe reports is: ", safe_count)
 
