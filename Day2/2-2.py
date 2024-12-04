@@ -58,11 +58,11 @@ def main():
           elif int(tmp_report[idx]) < int(tmp_report[idx+1]):
             increasing_or_decreasing.append(0)
 
-        # If it only increases once and decreases the rest of the time, or vice versa, it can still be safe
+        # If you see both 0 and 1, it sometimes increased and sometimes decreased, so mark it unsafe
         if 0 in increasing_or_decreasing and 1 in increasing_or_decreasing:
           safe = False
 
-        # If it's still safe, add it to the safe count.
+        # If it's still safe, add it to the safe count
         if safe:
           safe_count += 1
           # Break the loop so we don't keep checking the same report
