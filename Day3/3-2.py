@@ -28,7 +28,6 @@ def main():
     for item in mul:
       multiplicands.append(re.findall('[0-9]+', item))
 
-
   # Multiply each pair together and add it to a total
   total = 0
   for multiplicand in multiplicands:
