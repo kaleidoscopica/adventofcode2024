@@ -36,6 +36,6 @@ def main():
     if safe:
       safe_count += 1
     
-  print("The number of safe reports is: ", safe_count)
+  print("The number of safe reports is:", safe_count)
 
 main()

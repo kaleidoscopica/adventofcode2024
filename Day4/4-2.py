@@ -27,6 +27,6 @@ def main():
         if found1 == True and found2 == True:
           count += 1
   
-  print("The total number of 'X-MAS' found is: ", count)
+  print("The total number of 'X-MAS' found is:", count)
 
 main()

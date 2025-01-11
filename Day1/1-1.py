@@ -25,5 +25,5 @@ def main():
     distance = abs(item - second_list[idx])
     total_distances += distance
 
-  print("Total distance is: ", total_distances)
+  print("Total distance is:", total_distances)
 main()

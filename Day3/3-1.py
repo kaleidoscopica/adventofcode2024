@@ -21,6 +21,6 @@ def main():
     product = int(multiplicand[0]) * int(multiplicand[1])
     total += product
   
-  print("The total is: ", total)
+  print("The total is:", total)
 
 main()

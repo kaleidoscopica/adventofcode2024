@@ -70,6 +70,6 @@ def main():
         else:
           continue
     
-  print("The number of safe reports is: ", safe_count)
+  print("The number of safe reports is:", safe_count)
 
 main()

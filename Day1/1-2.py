@@ -21,5 +21,5 @@ def main():
     count = second_list.count(item)
     similarity_score += item * count
 
-  print("Similarity score is: ", similarity_score)
+  print("Similarity score is:", similarity_score)
 main()

@@ -50,6 +50,6 @@ def main():
           if wordsearch[idx1-1][idx2] == 'M' and wordsearch[idx1-2][idx2] == 'A' and wordsearch[idx1-3][idx2] == 'S':
             count += 1
   
-  print("The total number of 'XMAS' found is: ", count)
+  print("The total number of 'XMAS' found is:", count)
 
 main()
