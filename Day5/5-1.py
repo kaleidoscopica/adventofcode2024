@@ -1,5 +1,3 @@
-import re
-
 def main():
   rules = []
   updates = []

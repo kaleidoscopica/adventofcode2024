@@ -1,5 +1,3 @@
-import re
-
 def main():
   rules = []
   updates = []
@@ -17,6 +15,8 @@ def main():
   for update in updates:
     # Assume each update is valid
     valid = True
+    print("Before any changes.....", update)
+
     for idx, number in enumerate(update):
       # As long as we're not already at the last number, grab the next number to check
       if idx < len(update)-1:
@@ -29,17 +29,17 @@ def main():
             print("Evaluating rule", rule)
             # If the rule has the numbers out-of-order, the update is not correctly-ordered
             if rule[0] == next_number and rule[1] == number:
-              print("These numbers are out of order.")
+              print("These numbers are out of order. Let's switch them around.")
               valid = False
               # Switch them around to put them in the right order
-              print("Before switching around:", update[idx], update[idx+1])
               update[idx], update[idx+1] = update[idx+1], update[idx]
-              print("After switching:", update[idx], update[idx+1])
             else:
-              print("These numbers are in the correct order!")
-  
-    # If the update is incorrectly-ordered, add its middle page number to the total
+              print("These numbers are already in the correct order!")
+
+    print("After changes...", update)
+    # If the update was incorrectly-ordered, add its middle page number to the total
     if valid == False:
+      print("Adding middle number to total:", update[len(update)//2])
       total += int(update[len(update)//2])
 
   print("The total is:", total)
