@@ -19,9 +19,9 @@ def main():
     ops_list = [list(x) for x in combinations_with_replacement('+*', num_operators)]
     # Lookup dictionary for operators
     op = {'+': lambda x, y: x + y, '*': lambda x, y: x * y}
-    # Then try each list of operators zipped against the equation, and see if it matches the given value
+    # Then try each list of operators zipped against the equation, and see if evaluating it matches the given value
     for operators in ops_list:
       eq = [x for y in zip_longest(equation, operators) for x in y]
-      print(eq)
+      print(eval(eq))
 
 main()
