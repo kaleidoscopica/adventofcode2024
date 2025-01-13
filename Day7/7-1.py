@@ -1,4 +1,4 @@
-from itertools import combinations_with_replacement, zip_longest
+from itertools import product, zip_longest
 import re
 
 def main():
@@ -15,12 +15,10 @@ def main():
   total = 0
 
   for idx, equation in enumerate(equations):
-    print("Evaluating numbers...", equation)
-    print("Test value here is", values[idx])
     found = False
     # For each equation, generate a list of all possible combinations of + and * operators to try
     num_operators = len(equation)-1
-    ops_list = [list(x) for x in combinations_with_replacement('+*', num_operators)]
+    ops_list = [list(x) for x in product('+*', repeat=num_operators)]
     # Then try each list of operators zipped against the equation, and see if evaluating it matches the given value
     for operators in ops_list:
       if found == False:
@@ -37,14 +35,9 @@ def main():
           eq.insert(0, '(')
         # Now join all the items in the list into one big concatenated equation and evaluate it
         evaluation = eval(''.join(eq))
-
         if evaluation == values[idx]:
-          print("Equation:", ''.join(eq))
-          print("Evaluation:", evaluation)
-          print("This equation is possible. Values being added to total:", values[idx])
           found = True
           total += values[idx]
-          print("Running total:", total)
 
   print("The total value of all possible true equations is:", total)
 
