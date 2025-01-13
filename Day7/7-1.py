@@ -1,4 +1,5 @@
 from itertools import combinations_with_replacement, zip_longest
+import re
 
 def main():
   values = []
@@ -14,27 +15,32 @@ def main():
   total = 0
 
   for idx, equation in enumerate(equations):
-    print("Evaluating equation", equation)
+    print("Evaluating numbers...", equation)
     print("Test value here is", values[idx])
-    # found flag, for when operators have more than one possible configuration
     found = False
-    # For each equation, generate a combination of + and * operators to try
+    # For each equation, generate a list of all possible combinations of + and * operators to try
     num_operators = len(equation)-1
     ops_list = [list(x) for x in combinations_with_replacement('+*', num_operators)]
-    # Lookup dictionary for operators
-    op = {'+': lambda x, y: x + y, '*': lambda x, y: x * y}
     # Then try each list of operators zipped against the equation, and see if evaluating it matches the given value
     for operators in ops_list:
-      #print("Evaluating operators", operators)
       if found == False:
         # zip_longest allows us to zip even though one list is one item longer than the other
         eq = [x for y in zip_longest(equation, operators) for x in y]
         # Since the shorter list left a NoneType at the end when zipping, remove it
         del eq[-1]
+        # Add closing parentheses after every digit except the first one
+        for index, i in enumerate(eq):
+          if i.isdigit() and index > 1:
+            eq.insert(index+1, ')')
+        # Add that amount of opening parentheses at the beginning (len(equation)-1)
+        for i in range(len(equation)-1):
+          eq.insert(0, '(')
         # Now join all the items in the list into one big concatenated equation and evaluate it
-        if eval(''.join(eq)) == values[idx]:
+        evaluation = eval(''.join(eq))
+
+        if evaluation == values[idx]:
           print("Equation:", ''.join(eq))
-          print("Evaluation:", eval(''.join(eq)))
+          print("Evaluation:", evaluation)
           print("This equation is possible. Values being added to total:", values[idx])
           found = True
           total += values[idx]
