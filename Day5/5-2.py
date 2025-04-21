@@ -8,8 +8,7 @@ def main():
         rules.append(line.strip().split('|'))
       elif ',' in line:
         updates.append(line.strip().split(','))
-  file.close()
-
+  
   total = 0
   out_of_order = []
 

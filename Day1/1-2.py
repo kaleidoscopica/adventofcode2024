@@ -4,7 +4,6 @@ def main():
   with open('input.txt') as file:
     for line in file:
       location_ids.append(line.strip().split())
-  file.close()
 
   first_list = []
   second_list = []

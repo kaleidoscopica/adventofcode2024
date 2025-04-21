@@ -7,7 +7,6 @@ def main():
   with open('input.txt') as file:
     # Join all the lines together, into a single line
     data = " ".join(line.strip() for line in file)
-  file.close
 
   # First insert a 'do()' at the beginning since mul() instructions are enabled at start
   data = 'do()' + data

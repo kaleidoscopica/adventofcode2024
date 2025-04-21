@@ -9,7 +9,6 @@ def main():
     for line in file:
       values.append(int(line.split(':')[0]))
       equations.append([x for x in line.split(':')[1].split()])
-  file.close()
 
   total = 0
 

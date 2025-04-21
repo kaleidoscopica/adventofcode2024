@@ -4,7 +4,6 @@ def main():
   with open('input.txt') as file:
     for line in file:
       wordsearch.append(line.strip())
-    file.close()
 
   count = 0
 

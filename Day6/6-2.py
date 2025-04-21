@@ -4,7 +4,6 @@ def main():
   with open('input.txt') as file:
     for line in file:
       map.append(line.strip())
-  file.close()
 
   # First, find the location of the guard
   for idx1, row in enumerate(map):

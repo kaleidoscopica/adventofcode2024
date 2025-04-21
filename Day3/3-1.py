@@ -7,7 +7,6 @@ def main():
   with open('input.txt') as file:
     # Join all the lines together, into a single line
     data = " ".join(line.strip() for line in file)
-  file.close
 
   # Use regex to find all strings that look like 'mul(123,123)', and add them to a list
   mul = re.findall('mul\([0-9]+\,[0-9]+\)', data)

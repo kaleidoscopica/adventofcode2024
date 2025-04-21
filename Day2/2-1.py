@@ -4,7 +4,6 @@ def main():
   with open('input.txt') as file:
     for report in file:
       reports.append(report.strip().split())
-  file.close()
 
   # Analyze each report to see if it is safe
   safe_count = 0
