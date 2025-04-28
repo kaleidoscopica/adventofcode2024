@@ -44,22 +44,21 @@ def main():
           # Then calculate and add the antinodes to the antinode_dict, if they are within the bounds
           if (c_1 - col_distance >= 0) and (r_1 - row_distance >= 0):
             anti_1 = pos_1 - pos_distance
+            r_3, c_3 = decode(anti_1)
+            # Another check to make sure they're in bounds
+            if r_3 >= 0 and r_3 <= 49 and c_3 >= 0 and c_3 <= 49:
+              if key in antinode_dict:
+                antinode_dict[key].append(anti_1)
+              else:
+                antinode_dict[key] = [anti_1]
           if (c_2 + col_distance <= 49) and (r_2 + row_distance <= 49):
             anti_2 = pos_2 + pos_distance
-          r_3, c_3 = decode(anti_1)
-
-          # Another check to make sure they're in bounds
-          if r_3 >= 0 and r_3 <= 49 and c_3 >= 0 and c_3 <= 49:
-            if key in antinode_dict:
-              antinode_dict[key].append(anti_1)
-            else:
-              antinode_dict[key] = [anti_1]
-          r_4, c_4 = decode(anti_2)
-          if r_4 >= 0 and r_4 <= 49 and c_4 >= 0 and c_4 <= 49:
-            if key in antinode_dict:
-              antinode_dict[key].append(anti_2)
-            else:
-              antinode_dict[key] = [anti_2]
+            r_4, c_4 = decode(anti_2)
+            if r_4 >= 0 and r_4 <= 49 and c_4 >= 0 and c_4 <= 49:
+              if key in antinode_dict:
+                antinode_dict[key].append(anti_2)
+              else:
+                antinode_dict[key] = [anti_2]
         inner_count += 1
       outer_count += 1
   
@@ -79,7 +78,7 @@ def main():
 
   print("The number of unique locations containing an antinode is:", len(antinode_set))
   # 417 is too high
-
+  # 379 is too high
 
 def encode(row, col):
   return row*50 + col + 1   # Encode between 1-2500
