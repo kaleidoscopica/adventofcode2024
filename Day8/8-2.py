@@ -41,8 +41,9 @@ def main():
         if (abs(col_distance) >= 2) or (abs(row_distance) >= 2) or (abs(row_distance) >= 1 and abs(col_distance) >= 1):
 
           # Then calculate and add the antinodes to the antinode_dict, if they are within the bounds
-          r_3 = r_1 - row_distance
-          c_3 = c_1 - col_distance
+          # And now we must place antinodes on the original resonant antennae, too
+          r_3 = r_1
+          c_3 = c_1
           anti_1 = encode(r_3, c_3)
           # Check to make sure it's in bounds
           while r_3 >= 0 and r_3 <= 49 and c_3 >= 0 and c_3 <= 49:
@@ -55,8 +56,8 @@ def main():
             c_3 = c_3 - col_distance
             anti_1 = encode(r_3, c_3)
 
-          r_4 = r_2 + row_distance
-          c_4 = c_2 + col_distance
+          r_4 = r_2
+          c_4 = c_2
           anti_2 = encode(r_4, c_4)
           # Check to make sure it's in bounds
           while r_4 >= 0 and r_4 <= 49 and c_4 >= 0 and c_4 <= 49:
@@ -80,7 +81,6 @@ def main():
   antinode_set = set(antinode_list)
 
   print("The number of unique locations containing an antinode is:", len(antinode_set))
-  # 1136 is too low
 
 def encode(row, col):
   return row*50 + col + 1   # Encode between 1-2500
