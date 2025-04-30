@@ -1,9 +1,9 @@
 def main():
 
   blocks = []
+  free_spaces = []
 
   with open('input.txt') as file:
-    #disk_map = file.readlines()
     for line in file:
       for idx, c in enumerate(line):
         if idx % 2 == 0:
@@ -18,6 +18,8 @@ def main():
   for idx, block in enumerate(blocks):
     if idx != negative_idx:
       if block == '':
+        # Find out how many empty blocks there are
+        block_size = calculate_space(blocks, idx)
         # Blank space - grab the last block, and move it here
         file_id = blocks[negative_idx]
         negative_idx -= 1
@@ -47,3 +49,12 @@ def main():
   print("The checksum value is:", checksum)
 
 main()
+
+def calculate_space(blocks, idx):
+  block_size = 1
+  while idx+1 < len(blocks):
+    if blocks[idx+1] == '':
+      block_size += 1
+    else:
+      break
+  return block_size

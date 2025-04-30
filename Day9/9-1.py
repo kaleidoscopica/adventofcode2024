@@ -3,7 +3,6 @@ def main():
   blocks = []
 
   with open('input.txt') as file:
-    #disk_map = file.readlines()
     for line in file:
       for idx, c in enumerate(line):
         if idx % 2 == 0:
